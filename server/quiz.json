@@ -1,0 +1,112 @@
+{
+    "quiz": [
+      {
+        "id": 1,
+        "title": "HTML kérdéssor",
+        "description": "Ez egy HTML kérdéssor.",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Minek a rövidítése a HTML",
+                "answers": [
+                    {
+                        "id": 1,
+                        "content": "HyperTransport Marking Language",
+                        "correct": false
+                    },
+                    {
+                        "id": 2,
+                        "content": "HyperText Markup Language",
+                        "correct": true
+                    },
+                    {
+                        "id": 3,
+                        "content": "Hierarchical Text Modifying Language",
+                        "correct": false
+                    }
+                ],
+                "points": 2,
+                "active": "true"
+            },
+            {
+                "id": 2,
+                "question": "Használták-e valaha a table elemet sitebuildre?",
+                "answers": [
+                    {
+                        "id": 4,
+                        "content": "Soha. A table kizárólag strukturált adatmegjelenítésre szolgál.",
+                        "correct": false
+                    },
+                    {
+                        "id": 5,
+                        "content": "Igen, még a 2000-es évek környékén.",
+                        "correct": true
+                    },
+                    {
+                        "id": 6,
+                        "content": "Igen. Még ma is alkalmazzák.",
+                        "correct": false
+                    }
+                ],
+                "points": 2,
+                "active": "true"
+            }
+        ],
+        "active": true
+      },
+      {
+        "id": 2,
+        "title": "Másiok HTML kérdéssor",
+        "description": "Ez egy másik HTML kérdéssor.",
+        "questions": [
+            {
+                "id": 1,
+                "question": "Minek a rövidítése a HTML",
+                "answers": [
+                    {
+                        "id": 1,
+                        "content": "HyperTransport Marking Language",
+                        "correct": false
+                    },
+                    {
+                        "id": 2,
+                        "content": "HyperText Markup Language",
+                        "correct": true
+                    },
+                    {
+                        "id": 3,
+                        "content": "Hierarchical Text Modifying Language",
+                        "correct": false
+                    }
+                ],
+                "points": 2,
+                "active": "true"
+            },
+            {
+                "id": 2,
+                "question": "Használták-e valaha a table elemet sitebuildre?",
+                "answers": [
+                    {
+                        "id": 4,
+                        "content": "Soha. A table kizárólag strukturált adatmegjelenítésre szolgál.",
+                        "correct": false
+                    },
+                    {
+                        "id": 5,
+                        "content": "Igen, még a 2000-es évek környékén.",
+                        "correct": true
+                    },
+                    {
+                        "id": 6,
+                        "content": "Igen. Még ma is alkalmazzák.",
+                        "correct": false
+                    }
+                ],
+                "points": 2,
+                "active": "true"
+            }
+        ],
+        "active": true
+      }
+    ]
+}

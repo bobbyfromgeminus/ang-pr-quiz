@@ -4,6 +4,6 @@ export class Quiz {
     id: number = 0;
     title: string = '';
     description: string = '';
-    questions: Question = new Question();
+    questions: Question[] = new Array;
     active: boolean = true;
 }

@@ -2,3 +2,51 @@ Itt listázza ki az alkalmazás kártyákon a quiz-eket.<br>
 Ezek közül tud egyet választani a tanuló, és utána azt kitölteni.<br>
 Kattintásra a QuizComponent nyílik meg az adott Quiz-el.<br>
 A kis kártyákon látszik a Quiz címe és rövid leírása is.
+
+<div class="col-12 d-flex flex-wrap">
+
+    <div class="col-4 py-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">title</h4>
+                <p class="card-text">description</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4 py-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">title</h4>
+                <p class="card-text">description</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4 py-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">title</h4>
+                <p class="card-text">description</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4 py-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">title</h4>
+                <p class="card-text">description</p>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+id: number = 0;
+title: string = '';
+description: string = '';
+questions: Question = new Question();
+active: boolean = true;
