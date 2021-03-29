@@ -38,21 +38,26 @@ backend -et.
 1. AdminComponent: itt táblázatos formában jelennek meg a quiz -ek, minden sor 
 végén van törlés és szerkesztés gomb. A táblázat szűrhető és rendezhető. Külön 
 gomb van az új quiz létrehozására.
+
 1. QuizEditorComponent: itt az lehet Quiz -t létrehozni vagy szerkeszteni. Erre 
 egy űrlap szolgál, validációval.
+
 1. QuestionEditorComponent: ez a QuizEditorComponent -ből nyílik meg, a 
 `New Question` gombra kattintva. Egy kérdés csak egy Quiz -hez tartozhat. Ez is 
 egy űrlap, ahol validálva lehet bevinni az egyes kérdések adatait.
+
 1. QuizComponent: megjeleníti az egyes Quiz -eket a tanulóknak. Kiírja a kérdést 
 és a lehetséges válaszokat, a választás és a továbblépés után pedig jó válasz 
 esetén növeli a pontokat, amelyek a nézet jobb felső sarkában láthatóak. Csak 
 előre gomb kell, ne lehessen visszalépni. A megjelölt válasz vagy háttérszínnel, 
 vagy checkbox -al legyen kiemelve. Elég az egyválasztós lehetőség, nem kell 
 több kérdés típus.
+
 1. HomeComponent: itt listázza ki az alkalmazás kártyákon a quiz -eket. Ezek 
 közül tud egyet választani a tanuló, és utána azt kitölteni. Kattintásra a 
 QuizComponent nyílik meg az adott Quiz -el. A kis kártyákon látszik a Quiz címe 
 és rövid leírása is.
+
 1. NavigationComponent: egyszerű Bootstrap navigáció, Home, Admin oldalakkal.
 - Általános jellemzők: 
 - az űrlapokon minden mező legyen kötelező, a szövegeknek legyen min hossza
