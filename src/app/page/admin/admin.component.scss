@@ -1,0 +1,9 @@
+.arrow {
+    display: none;
+    &__active { display: inline-block; }
+}
+
+.th {
+    cursor: pointer;
+    user-select: none;
+}

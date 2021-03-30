@@ -1,3 +1,101 @@
-A QuizEditorComponent -ből nyílik meg, a `New Question` gombra kattintva.<br>
-Egy kérdés csak egy Quiz-hez tartozhat.<br>
-Ez is egy űrlap, ahol validálva lehet bevinni az egyes kérdések adatait.
+<div class="row">
+    <div *ngIf="question$ | async as question" class="col-8 offset-2 mt-3">
+      <h2 *ngIf="question.id==0">Új kérdés létrehozása</h2>
+      <h2 *ngIf="question.id!=0">Kérdés adatainak módosítása</h2>
+      <form #questionForm="ngForm" (ngSubmit)="onFormSubmit(question)">
+        <input name="id" type="hidden" [(ngModel)]="question.id">
+  
+        <div class="form-group">
+            <label>kérdés</label>
+            <input
+                class="form-control"
+                type="text"
+                name="question"
+                pattern=".{8,100}" 
+                required 
+                [(ngModel)]="question.question">
+            <div [hidden]="questionForm.controls.question?.valid || questionForm.controls.question?.pristine" class="error__message">
+                Legalább 8, de maximum 100 karakter megadása kötelező!
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>pontszám</label>
+            <input
+                class="form-control"
+                type="number"
+                name="points"
+                pattern="" 
+                required 
+                [(ngModel)]="question.points">
+            <div [hidden]="questionForm.controls.points?.valid || questionForm.controls.points?.pristine" class="error__message">
+                Szám
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label>állapot</label>
+            <select [(ngModel)]="question.active" name="active" class="form-control">
+                <option [ngValue]="true">aktív</option>
+                <option [ngValue]="false">inaktív</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>válaszok</label>
+            <table class="table table-sm table-striped border">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>tartalom</th>
+                        <th>helyes</th>
+                        <th>
+                            <button type="button"
+                                    class="btn btn-success btn-sm btn-block"
+                                    >
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let answer of answerArray">
+                        <td>{{ answer.id }}</td>
+                        <td>{{ answer.content }}</td>
+                        <td>{{ answer.correct }}</td>
+                        <td class="text-center">
+                            <div class="btn-group" role="group" aria-label="">
+                                <button type="button" 
+                                    class="btn btn-sm btn-warning" 
+                                    >
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button type="button" 
+                                    class="btn btn-sm btn-danger" 
+                                    
+                                    data-toggle="modal" 
+                                    data-target="#myModal">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+  
+        <button type="submit" 
+                class="btn btn-primary btn-block mt-5"
+                [disabled]="questionForm.invalid">
+          <i class="fa fa-save"></i>
+        </button>
+  
+      </form>
+    </div>
+  </div>
+
+<div class="jumbotron py-4 col-8 offset-2 mt-5">
+    <p class="m-0">A QuizEditorComponent -ből nyílik meg, a `New Question` gombra kattintva.<br>
+        Egy kérdés csak egy Quiz-hez tartozhat.<br>
+        Ez is egy űrlap, ahol validálva lehet bevinni az egyes kérdések adatait.</p>
+</div>

@@ -1,2 +1,102 @@
-Itt lehet Quiz-t létrehozni vagy szerkeszteni.<br>
-Erre egy űrlap szolgál, validációval.
+<div class="row">
+    <div *ngIf="quiz$ | async as quiz" class="col-8 offset-2 mt-3">
+      <h2 *ngIf="quiz.id==0">Új kérdéssor létrehozása</h2>
+      <h2 *ngIf="quiz.id!=0">Kérdéssor adatainak módosítása</h2>
+      <form #quizForm="ngForm" (ngSubmit)="onFormSubmit(quiz)">
+        <input name="id" type="hidden" [(ngModel)]="quiz.id">
+  
+        <div class="form-group">
+            <label>cím</label>
+            <input
+                class="form-control"
+                type="text"
+                name="title"
+                pattern=".{8,40}" 
+                required 
+                [(ngModel)]="quiz.title">
+            <div [hidden]="quizForm.controls.title?.valid || quizForm.controls.title?.pristine" class="error__message">
+                Legalább 8, de maximum 40 karakter megadása kötelező!
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label>leírás</label>
+            <input
+                class="form-control"
+                type="text"
+                name="description"
+                pattern=".{8,100}" 
+                required 
+                [(ngModel)]="quiz.description">
+            <div [hidden]="quizForm.controls.description?.valid || quizForm.controls.description?.pristine" class="error__message">
+                Legalább 8, de maximum 100 karakter megadása kötelező!
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label>állapot</label>
+            <select [(ngModel)]="quiz.active" name="active" class="form-control">
+                <option [ngValue]="true">aktív</option>
+                <option [ngValue]="false">inaktív</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>kérdések</label>
+            <table class="table table-sm table-striped border">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>kérdés</th>
+                        <th>pontszám</th>
+                        <th>aktív</th>
+                        <th>
+                            <button type="button"
+                                    class="btn btn-success btn-sm btn-block"
+                                    [routerLink]="'/edit-question/0/'+quiz.id">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let question of questionArray">
+                        <td>{{ question.id }}</td>
+                        <td>{{ question.question }}</td>
+                        <td>{{ question.points }}</td>
+                        <td>{{ question.active }}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="">
+                                <button type="button" 
+                                    class="btn btn-sm btn-warning" 
+                                    [routerLink]="'/edit-question/'+question.id+'/'+quiz.id">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button type="button" 
+                                    class="btn btn-sm btn-danger" 
+                                    
+                                    data-toggle="modal" 
+                                    data-target="#myModal">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+  
+        <button type="submit" 
+                class="btn btn-primary btn-block mt-5"
+                [disabled]="quizForm.invalid">
+          <i class="fa fa-save"></i>
+        </button>
+  
+      </form>
+    </div>
+  </div>
+
+<div class="jumbotron py-4 col-8 offset-2 mt-5">
+    <p class="m-0">Itt lehet Quiz-t létrehozni vagy szerkeszteni.<br>
+        Erre egy űrlap szolgál, validációval.</p>
+</div>

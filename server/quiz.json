@@ -1,112 +1,170 @@
 {
-    "quiz": [
-      {
-        "id": 1,
-        "title": "HTML kérdéssor",
-        "description": "Ez egy HTML kérdéssor.",
-        "questions": [
-            {
-                "id": 1,
-                "question": "Minek a rövidítése a HTML",
-                "answers": [
-                    {
-                        "id": 1,
-                        "content": "HyperTransport Marking Language",
-                        "correct": false
-                    },
-                    {
-                        "id": 2,
-                        "content": "HyperText Markup Language",
-                        "correct": true
-                    },
-                    {
-                        "id": 3,
-                        "content": "Hierarchical Text Modifying Language",
-                        "correct": false
-                    }
-                ],
-                "points": 2,
-                "active": "true"
-            },
-            {
-                "id": 2,
-                "question": "Használták-e valaha a table elemet sitebuildre?",
-                "answers": [
-                    {
-                        "id": 4,
-                        "content": "Soha. A table kizárólag strukturált adatmegjelenítésre szolgál.",
-                        "correct": false
-                    },
-                    {
-                        "id": 5,
-                        "content": "Igen, még a 2000-es évek környékén.",
-                        "correct": true
-                    },
-                    {
-                        "id": 6,
-                        "content": "Igen. Még ma is alkalmazzák.",
-                        "correct": false
-                    }
-                ],
-                "points": 2,
-                "active": "true"
-            }
-        ],
-        "active": true
-      },
-      {
-        "id": 2,
-        "title": "Másiok HTML kérdéssor",
-        "description": "Ez egy másik HTML kérdéssor.",
-        "questions": [
-            {
-                "id": 1,
-                "question": "Minek a rövidítése a HTML",
-                "answers": [
-                    {
-                        "id": 1,
-                        "content": "HyperTransport Marking Language",
-                        "correct": false
-                    },
-                    {
-                        "id": 2,
-                        "content": "HyperText Markup Language",
-                        "correct": true
-                    },
-                    {
-                        "id": 3,
-                        "content": "Hierarchical Text Modifying Language",
-                        "correct": false
-                    }
-                ],
-                "points": 2,
-                "active": "true"
-            },
-            {
-                "id": 2,
-                "question": "Használták-e valaha a table elemet sitebuildre?",
-                "answers": [
-                    {
-                        "id": 4,
-                        "content": "Soha. A table kizárólag strukturált adatmegjelenítésre szolgál.",
-                        "correct": false
-                    },
-                    {
-                        "id": 5,
-                        "content": "Igen, még a 2000-es évek környékén.",
-                        "correct": true
-                    },
-                    {
-                        "id": 6,
-                        "content": "Igen. Még ma is alkalmazzák.",
-                        "correct": false
-                    }
-                ],
-                "points": 2,
-                "active": "true"
-            }
-        ],
-        "active": true
-      }
-    ]
+  "students": [
+    {
+      "id": 1,
+      "name": "Johnnny Mnemonic",
+      "email": "johnny@mnemonic.com",
+      "points": 0,
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Donna Noble",
+      "email": "donna.noble@gmail.com",
+      "points": 0,
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Harry Potter",
+      "email": "hpotter@gmail.com",
+      "points": 0,
+      "active": true
+    }
+  ],
+  "quizzes": [
+    {
+      "id": 1,
+      "title": "HTML kérdéssor",
+      "description": "Ebben a kvízben HTML témajú kérdéseket találsz.",
+      "questions": [
+        1,
+        2
+      ],
+      "active": true
+    },
+    {
+      "id": 2,
+      "title": "CSS kérdéssor",
+      "description": "Tesztelnéd CSS tudásodat? Válaszd ezt a kérdéssort!",
+      "questions": [
+        3,
+        4,
+        5
+      ],
+      "active": true
+    },
+    {
+      "id": 3,
+      "title": "Javascript kérdéssor",
+      "description": "Mennyire mélyültél el a JS-ben? Tegyünk egy próbát!",
+      "questions": [],
+      "active": true
+    },
+    {
+      "id": 4,
+      "title": "Typescript kérdéssor",
+      "description": "Típuskényszerítés megy? Lássuk!",
+      "questions": [],
+      "active": true
+    },
+    {
+      "id": 5,
+      "title": "Angular kérdéssor",
+      "description": "Kíváncsi vagy, mennyi ragadt meg angularból? Töltsd ki ezt a kérdéssort!",
+      "questions": [],
+      "active": true
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "Mit takar a HTML rövidítés?",
+      "answers": [
+        {
+          "id": 1,
+          "content": "HyperTransport Material Literature",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "content": "HyperText Markup Language",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "content": "HyperText Marking Language",
+          "correct": false
+        }
+      ],
+      "points": 2,
+      "active": true
+    },
+    {
+      "id": 2,
+      "question": "Használták-e a table elemet fő sitebuild elemként?",
+      "answers": [
+        {
+          "id": 4,
+          "content": "Nem, mert a table strukrútált adatmegjelenítésre szolgál.",
+          "correct": false
+        },
+        {
+          "id": 5,
+          "content": "A 2000-es évek elején használták, de a div és a foating leváltotta.",
+          "correct": true
+        },
+        {
+          "id": 6,
+          "content": "Mai napig használják.",
+          "correct": false
+        }
+      ],
+      "points": 2,
+      "active": true
+    },
+    {
+      "id": 3,
+      "question": "Mit takar a CSS rövidítés?",
+      "answers": [
+        {
+          "id": 7,
+          "content": "Cascading Style Sheets",
+          "correct": true
+        },
+        {
+          "id": 8,
+          "content": "Centralized Style Schema",
+          "correct": false
+        },
+        {
+          "id": 9,
+          "content": "Cascading Style System",
+          "correct": false
+        }
+      ],
+      "points": 3,
+      "active": true
+    },
+    {
+      "id": 4,
+      "question": "Mely css property segítségével tudunk block elemnek vetett árnyékot adni?",
+      "answers": [
+        {
+          "id": 10,
+          "content": "drop-shadow",
+          "correct": false
+        },
+        {
+          "id": 11,
+          "content": "box-shadow",
+          "correct": true
+        },
+        {
+          "id": 12,
+          "content": "shadow",
+          "correct": false
+        }
+      ],
+      "points": 2,
+      "active": true
+    },
+    {
+      "id": 5,
+      "question": "Ez is egy css kérdés",
+      "answers": [],
+      "points": 1,
+      "active": true
+    }
+  ]
 }

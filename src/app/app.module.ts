@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminComponent } from './page/admin/admin.component';
@@ -9,6 +10,9 @@ import { QuestionEditorComponent } from './page/question-editor/question-editor.
 import { QuizComponent } from './page/quiz/quiz.component';
 import { HomeComponent } from './page/home/home.component';
 import { NavigationComponent } from './common/navigation/navigation.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FilterPipe } from './pipe/filter.pipe';
+import { SorterPipe } from './pipe/sorter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,11 +22,15 @@ import { NavigationComponent } from './common/navigation/navigation.component';
     QuestionEditorComponent,
     QuizComponent,
     HomeComponent,
-    NavigationComponent
+    NavigationComponent,
+    FilterPipe,
+    SorterPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

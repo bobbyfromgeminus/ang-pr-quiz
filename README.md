@@ -22,7 +22,7 @@
 1. Student: id, name, email, points, active
 1. Answer: id, content, correct:Boolean
 1. Question: id, question, answers<Answer[]>, points, active
-1. Quiz: id, title, description, questions<Question[]>, active
+1. Quiz: id, title, description, questions<number[]>, active
 ​
 ### Services
 1. StudentService: a tanulók adatait szolgáltatja, CRUD műveleteket ismeri.

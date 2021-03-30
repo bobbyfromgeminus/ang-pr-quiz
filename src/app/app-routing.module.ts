@@ -24,7 +24,7 @@ const routes: Routes = [
     component: QuizEditorComponent,
   },
   {
-    path: 'edit-question/:id',
+    path: 'edit-question/:id/:qid',
     component: QuestionEditorComponent,
   },
   {

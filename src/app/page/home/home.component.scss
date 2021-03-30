@@ -1,0 +1,13 @@
+.quiz__card {
+    display: flex;
+    cursor: pointer;
+    transform: scale(1);
+    transition: all .2s ease-in-out;
+    &:hover {
+        transform: scale(1.05);
+        & .card {
+            transition: all .2s ease-in-out;
+            box-shadow: 0 0 .8rem #00000033;
+        }
+    }
+}

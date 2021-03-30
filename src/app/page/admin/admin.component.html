@@ -1,4 +1,98 @@
-Táblázatos formában jelennek meg a quiz-ek.<br>
-Minden sor végén van törlés és szerkesztés gomb.<br>
-A táblázat szűrhető és rendezhető.<br>
-Külön gomb van az új quiz létrehozására.
+<table class="table table-striped col-10 offset-1">
+    <thead>
+        <tr>
+            <th class="th" id="#thead_id" (click)="changeOrder('id')">
+                #
+                <i id="arrow_up_id" class="arrow fa fa-arrow-up" aria-hidden="true"></i>
+                <i id="arrow_down_id" class="arrow fa fa-arrow-down" aria-hidden="true"></i>
+            </th>
+            <th class="th" id="#thead_title" (click)="changeOrder('title')">
+                cím
+                <i id="arrow_up_title" class="arrow fa fa-arrow-up" aria-hidden="true"></i>
+                <i id="arrow_down_title" class="arrow fa fa-arrow-down" aria-hidden="true"></i>
+            </th>
+            <th class="th" id="#thead_description" (click)="changeOrder('description')">
+                leírás
+                <i id="arrow_up_description" class="arrow fa fa-arrow-up" aria-hidden="true"></i>
+                <i id="arrow_down_description" class="arrow fa fa-arrow-down" aria-hidden="true"></i>
+            </th>
+            <th class="th" id="#thead_active" (click)="changeOrder('active')">
+                aktív
+                <i id="arrow_up_active" class="arrow fa fa-arrow-up" aria-hidden="true"></i>
+                <i id="arrow_down_active" class="arrow fa fa-arrow-down" aria-hidden="true"></i>
+            </th>
+            <th>
+                <button type="button" class="btn btn-sm btn-success btn-block" routerLink="/edit-quiz/0">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </th>
+        </tr>
+        <tr>
+            <th colspan="2">
+                <input type="text" [(ngModel)]="filterPhrase" class="form-control" placeholder="Search...">
+            </th>
+            <th>
+                <select class="form-control" [(ngModel)]="filterKey">
+                    <option>#</option>
+                    <option>cím</option>
+                    <option>leírás</option>
+                    <option>aktív</option>
+                </select>
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of list$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
+            <td>{{ item.id }}</td>
+            <td>{{ item.title }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.active }}</td>
+            <td class="text-center">
+                <div class="btn-group" role="group">
+                    <button type="button" 
+                            class="btn btn-sm btn-warning" 
+                            [routerLink]="'/edit-quiz/'+item.id">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button type="button" 
+                            class="btn btn-sm btn-danger" 
+                            (click)="setToDelete(item)" 
+                            data-toggle="modal" 
+                            data-target="#myModal">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+            </td>
+        </tr>
+        
+    </tbody>
+</table>
+
+<div class="jumbotron py-4 col-10 offset-1">
+    <p class="m-0">Táblázatos formában jelennek meg a quiz-ek.<br>
+        Minden sor végén van törlés és szerkesztés gomb.<br>
+        A táblázat szűrhető és rendezhető.<br>
+        Külön gomb van az új quiz létrehozására.</p>
+</div>
+
+
+<!-- MODAL -->
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Törlés megerősítése</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Bezárás"></button>
+        </div>
+        <div class="modal-body">
+            <p>Valóban törölni szeretnéd ezt a kérdéssort? #{{selectedItemToDelete.id}}</p>
+        </div>
+        <div class="modal-footer">
+          <button (click)="onDelete()"  type="button" class="btn btn-danger" data-dismiss="modal">Igen, törlöm.</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Mégsem törölném.</button>
+        </div>
+      </div>
+    </div>
+  </div>
