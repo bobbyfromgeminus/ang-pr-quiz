@@ -1,8 +1,9 @@
 <div class="row">
-    <div *ngIf="question$ | async as question" class="col-8 offset-2 mt-3">
+    <div *ngIf="question$ | async as question" class="col-6 offset-3 mt-3">
       <h2 *ngIf="question.id==0">Új kérdés létrehozása</h2>
       <h2 *ngIf="question.id!=0">Kérdés adatainak módosítása</h2>
       <form #questionForm="ngForm" (ngSubmit)="onFormSubmit(question)">
+
         <input name="id" type="hidden" [(ngModel)]="question.id">
   
         <div class="form-group">
@@ -13,11 +14,95 @@
                 name="question"
                 pattern=".{8,100}" 
                 required 
+                placeholder="kérdés"
                 [(ngModel)]="question.question">
             <div [hidden]="questionForm.controls.question?.valid || questionForm.controls.question?.pristine" class="error__message">
                 Legalább 8, de maximum 100 karakter megadása kötelező!
             </div>
         </div>
+
+        <div class="container border p-4 answer__box" *ngIf="question.id!=0">
+            <h5>Válaszok</h5>
+            <hr>
+    
+            <div class="form-group">
+                <label>1. válasz</label>
+                <input  class="form-control"
+                        type="hidden"
+                        name="answer_1_id"
+                        [(ngModel)]="question.answers[0].id">
+                <div class="form-group d-flex flex-wrap">
+                    <input  class="form-control" 
+                        style="float: left; width: 10%;"
+                        name="answer_1_correct" 
+                        type="checkbox"
+                        [(ngModel)]="question.answers[0].correct">
+                    <input  class="form-control" 
+                        style="float: left; width: 80%;"
+                        name="answer_1_content" 
+                        type="text" 
+                        pattern=".{8,100}" 
+                        required 
+                        placeholder="1. válasz"
+                        [(ngModel)]="question.answers[0].content">
+                </div> 
+                <div [hidden]="questionForm.controls.answer_1_content?.valid || questionForm.controls.answer_1_content?.pristine" class="error__message">
+                    Legalább 8, de maximum 100 karakter megadása kötelező!
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label>2. válasz</label>
+                <input  class="form-control"
+                        type="hidden"
+                        name="answer_2_id"
+                        [(ngModel)]="question.answers[1].id">
+                <div class="form-group d-flex flex-wrap">
+                    <input  class="form-control" 
+                        style="float: left; width: 10%;"
+                        name="answer_2_correct" 
+                        type="checkbox"
+                        [(ngModel)]="question.answers[1].correct">
+                    <input  class="form-control" 
+                        style="float: left; width: 80%;"
+                        name="answer_2_content" 
+                        type="text" 
+                        pattern=".{8,100}" 
+                        required 
+                        placeholder="2. válasz"
+                        [(ngModel)]="question.answers[1].content">
+                </div> 
+                <div [hidden]="questionForm.controls.answer_2_content?.valid || questionForm.controls.answer_2_content?.pristine" class="error__message">
+                    Legalább 8, de maximum 100 karakter megadása kötelező!
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label>3. válasz</label>
+                <input  class="form-control"
+                        type="hidden"
+                        name="answer_3_id"
+                        [(ngModel)]="question.answers[2].id">
+                <div class="form-group d-flex flex-wrap">
+                    <input  class="form-control" 
+                        style="float: left; width: 10%;"
+                        name="answer_3_correct" 
+                        type="checkbox"
+                        [(ngModel)]="question.answers[2].correct">
+                    <input  class="form-control" 
+                        style="float: left; width: 80%;"
+                        name="answer_3_content" 
+                        type="text" 
+                        pattern=".{8,100}" 
+                        required 
+                        placeholder="3. válasz"
+                        [(ngModel)]="question.answers[2].content">
+                </div>  
+                <div [hidden]="questionForm.controls.answer_3_content?.valid || questionForm.controls.answer_3_content?.pristine" class="error__message">
+                    Legalább 8, de maximum 100 karakter megadása kötelező!
+                </div>
+            </div>
+        </div>    
 
         <div class="form-group">
             <label>pontszám</label>
@@ -27,6 +112,7 @@
                 name="points"
                 pattern="" 
                 required 
+                min="1"
                 [(ngModel)]="question.points">
             <div [hidden]="questionForm.controls.points?.valid || questionForm.controls.points?.pristine" class="error__message">
                 Szám
@@ -40,49 +126,6 @@
                 <option [ngValue]="false">inaktív</option>
             </select>
         </div>
-
-        <div class="form-group">
-            <label>válaszok</label>
-            <table class="table table-sm table-striped border">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>tartalom</th>
-                        <th>helyes</th>
-                        <th>
-                            <button type="button"
-                                    class="btn btn-success btn-sm btn-block"
-                                    >
-                                <i class="fa fa-pencil"></i>
-                            </button>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let answer of answerArray">
-                        <td>{{ answer.id }}</td>
-                        <td>{{ answer.content }}</td>
-                        <td>{{ answer.correct }}</td>
-                        <td class="text-center">
-                            <div class="btn-group" role="group" aria-label="">
-                                <button type="button" 
-                                    class="btn btn-sm btn-warning" 
-                                    >
-                                <i class="fa fa-pencil"></i>
-                            </button>
-                            <button type="button" 
-                                    class="btn btn-sm btn-danger" 
-                                    
-                                    data-toggle="modal" 
-                                    data-target="#myModal">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
   
         <button type="submit" 
                 class="btn btn-primary btn-block mt-5"
@@ -94,7 +137,7 @@
     </div>
   </div>
 
-<div class="jumbotron py-4 col-8 offset-2 mt-5">
+<div class="jumbotron py-4 col-6 offset-3 mt-5">
     <p class="m-0">A QuizEditorComponent -ből nyílik meg, a `New Question` gombra kattintva.<br>
         Egy kérdés csak egy Quiz-hez tartozhat.<br>
         Ez is egy űrlap, ahol validálva lehet bevinni az egyes kérdések adatait.</p>

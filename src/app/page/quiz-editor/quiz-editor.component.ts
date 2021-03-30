@@ -70,4 +70,8 @@ export class QuizEditorComponent implements OnInit {
     }
   }
 
+
+
+  // A kérdés törlésénél a törlés mellett a quiz questions tömbjéból is ki kell venni az érintett id-t!
+
 }

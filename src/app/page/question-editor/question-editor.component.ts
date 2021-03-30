@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Answer } from 'src/app/model/answer';
+import { QuizService } from 'src/app/service/quiz.service';
 
 @Component({
   selector: 'app-question-editor',
@@ -14,42 +15,70 @@ import { Answer } from 'src/app/model/answer';
 export class QuestionEditorComponent implements OnInit {
 
   quiz: number = 0;
-  numberOfAnswers: number = 0;
-  answerArray: Answer[] = [];
+  nextFreeId: number = 0;
 
   question$: Observable<Question> = this.activatedRoute.params.pipe(
     switchMap( params => {
+      this.quiz = params.qid;
+
       if (Number(params.id) === 0) {
         return of(new Question());
       }
 
-      this.quiz = params.qid;
-
-      return this.questionService.get(Number(params.id)).pipe(
-        tap( item => {
-          this.numberOfAnswers = item.answers.length;
-          this.answerArray = item.answers;
-        })
-      );
+      return this.questionService.get(Number(params.id));
 
     })
   );
 
+  defaultAnswer: Answer[] = [
+    {
+      "id": 1,
+      "content": "",
+      "correct": false
+    },
+    {
+      "id": 2,
+      "content": "",
+      "correct": false
+    },
+    {
+      "id": 3,
+      "content": "",
+      "correct": false
+    }
+  ];
+
   constructor(
     private questionService: QuestionService,
+    private quizService: QuizService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
+    // Szükségem van arra, hogy mi lesz a következő kiadható question id
+    this.questionService.getAll().subscribe(
+      data => {
+        this.nextFreeId = data.slice(-1)[0].id + 1;
+        console.log(this.nextFreeId);
+      })
   }
 
   onFormSubmit(question: Question): void {
     try {
       if (question.id == 0) {
+        question.answers = this.defaultAnswer;
         this.questionService.create(question).subscribe(
-          () => this.router.navigate(['/edit-quiz/'+this.quiz])
-        );
+          () => {
+            this.quizService.get(this.quiz).subscribe(
+              data => {
+                data.questions.push(this.nextFreeId);
+                console.log(data.questions);
+                this.quizService.update(data).subscribe(
+                  () => this.router.navigate(['/edit-quiz/'+this.quiz])
+                );
+              })
+            })
       }
       else {
         this.questionService.update(question).subscribe(
