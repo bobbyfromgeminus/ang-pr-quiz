@@ -10,7 +10,7 @@
 
     <div    class="col-12 col-md-6 col-lg-3 py-3 quiz__card" 
             *ngFor="let item of list$ | async" 
-            [routerLink]="'list-quiz/'+item.id">
+            [routerLink]="'/quiz/'+item.id">
         <div class="card w-100">
             <div class="card-body">
                 <h4 class="card-title">{{ item.title }}</h4>

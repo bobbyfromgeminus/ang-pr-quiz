@@ -5,6 +5,8 @@ import { HomeComponent } from './page/home/home.component';
 import { QuestionEditorComponent } from './page/question-editor/question-editor.component';
 import { QuizEditorComponent } from './page/quiz-editor/quiz-editor.component';
 import { QuizComponent } from './page/quiz/quiz.component';
+import { StudentEditorComponent } from './page/student-editor/student-editor.component';
+import { StudentComponent } from './page/student/student.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,10 @@ const routes: Routes = [
     component: AdminComponent,
   },
   {
+    path: 'quiz/:id',
+    component: QuizComponent,
+  },
+  {
     path: 'edit-quiz/:id',
     component: QuizEditorComponent,
   },
@@ -24,8 +30,12 @@ const routes: Routes = [
     component: QuestionEditorComponent,
   },
   {
-    path: 'list-quiz/:id',
-    component: QuizComponent,
+    path: 'student',
+    component: StudentComponent,
+  },
+  {
+    path: 'edit-student/:id',
+    component: StudentEditorComponent,
   },
   {
     path: '**',

@@ -14,12 +14,26 @@
     
 </div>
 
-<div class="container d-flex flex-wrap" *ngIf="quiz$ | async as quiz">
+<div class="container d-flex flex-wrap questions hide" *ngIf="quiz$ | async as quiz">
 
-    <div class="card col-12" *ngFor="let question of questionArray">
-        <div class="card-body">
+    <div class="card col-12 hide" *ngFor="let question of questionArray" [id]="'q_'+question.id">
+        <div class="card-body w-100">
             <h4 class="card-title">{{question.question}}</h4>
-            <p class="card-text">{{question.points}}</p>
+
+            <div class="form-group ml-5">
+                <input type="checkbox" class="form-check-input">
+                <label class="form-check-label">{{ question.answers[0].content }}</label>
+            </div>
+            <div class="form-group ml-5">
+                <input type="checkbox" class="form-check-input">
+                <label class="form-check-label">{{ question.answers[1].content }}</label>
+            </div>
+            <div class="form-group ml-5">
+                <input type="checkbox" class="form-check-input">
+                <label class="form-check-label">{{ question.answers[2].content }}</label>
+            </div>
+
+            <p class="card-text">Ezért a kérdésért {{question.points}} pontot kaphatsz.</p>
         </div>
     </div>
 

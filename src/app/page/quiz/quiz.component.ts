@@ -62,7 +62,9 @@ export class QuizComponent implements OnInit {
   selectStudent(student: Student): void {
     this.selectedStudent = student;
     let studies = document.querySelector('.studies');
+    let questions = document.querySelector('.questions');
     studies?.classList.add('hide');
+    questions?.classList.remove('hide');
   }
 
 }

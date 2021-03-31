@@ -1,0 +1,76 @@
+<div class="row">
+    <div *ngIf="student$ | async as student" class="col-8 offset-2 mt-3">
+      <h2 *ngIf="student.id==0">Új tanuló létrehozása</h2>
+      <h2 *ngIf="student.id!=0">Tanuló adatainak módosítása</h2>
+      <form #studentForm="ngForm" (ngSubmit)="onFormSubmit(student)">
+        <input name="id" type="hidden" [(ngModel)]="student.id">
+  
+        <div class="form-group">
+            <label>cím</label>
+            <input
+                class="form-control"
+                type="text"
+                name="name"
+                pattern=".{8,40}" 
+                required 
+                [(ngModel)]="student.name">
+            <div [hidden]="studentForm.controls.name?.valid || studentForm.controls.name?.pristine" class="error__message">
+                Legalább 8, de maximum 40 karakter megadása kötelező!
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label>e-mail</label>
+            <input
+                class="form-control"
+                type="text"
+                name="email"
+                pattern=".{8,100}" 
+                required 
+                [(ngModel)]="student.email">
+            <div [hidden]="studentForm.controls.email?.valid || studentForm.controls.email?.pristine" class="error__message">
+                Legalább 8, de maximum 100 karakter megadása kötelező!
+            </div>
+        </div>
+  
+        <div class="form-group">
+            <label>állapot</label>
+            <select [(ngModel)]="student.active" name="active" class="form-control">
+                <option [ngValue]="true">aktív</option>
+                <option [ngValue]="false">inaktív</option>
+            </select>
+        </div>
+  
+        <button type="submit" 
+                class="btn btn-primary btn-block mt-5"
+                [disabled]="studentForm.invalid">
+          <i class="fa fa-save"></i>
+        </button>
+  
+      </form>
+    </div>
+  </div>
+
+<div class="jumbotron py-4 col-8 offset-2 mt-5">
+    <p class="m-0">Nem volt előírás, de pár nyom arra utalt, hogy kell tanuló szerkesztő űrlap is.</p>
+</div>
+
+
+<!-- MODAL -->
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Törlés megerősítése</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Bezárás"></button>
+        </div>
+        <div class="modal-body">
+            <p>Valóban törölni szeretnéd ezt a kérdéssort? #{{selectedItemToDelete.id}}</p>
+        </div>
+        <div class="modal-footer">
+          <button (click)="onDelete()"  type="button" class="btn btn-danger" data-dismiss="modal">Igen, törlöm.</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Mégsem törölném.</button>
+        </div>
+      </div>
+    </div>
+  </div>
