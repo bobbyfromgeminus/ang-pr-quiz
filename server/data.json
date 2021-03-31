@@ -28,7 +28,9 @@
       "title": "HTML kérdéssor",
       "description": "Ebben a kvízben HTML témajú kérdéseket találsz.",
       "questions": [
-        2
+        1,
+        2,
+        3
       ],
       "active": true
     },
@@ -37,9 +39,7 @@
       "title": "CSS kérdéssor",
       "description": "Tesztelnéd CSS tudásodat? Válaszd ezt a kérdéssort!",
       "questions": [
-        3,
-        4,
-        5
+        4
       ],
       "active": true
     },
@@ -54,205 +54,110 @@
       "id": 4,
       "title": "Typescript kérdéssor",
       "description": "Típuskényszerítés megy? Lássuk!",
-      "questions": [
-        6
-      ],
+      "questions": [],
       "active": true
     },
     {
       "id": 5,
       "title": "Angular kérdéssor",
       "description": "Kíváncsi vagy, mennyi ragadt meg angularból? Töltsd ki ezt a kérdéssort!",
-      "questions": [
-        8,
-        9
-      ],
+      "questions": [],
       "active": true
     }
   ],
   "questions": [
     {
+      "id": 1,
+      "question": "Mit takar a HTML rövidítés?",
+      "answers": [
+        {
+          "id": 1,
+          "content": "Hyperlink Text Marking Language",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "content": "HyperText Markup Language",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "content": "Hierachical Text Marking Language",
+          "correct": false
+        }
+      ],
+      "points": 2,
+      "active": true
+    },
+    {
       "id": 2,
-      "question": "Használták-e a table elemet fő sitebuild elemként?",
-      "answers": [
-        {
-          "id": 4,
-          "content": "Nem, mert a table strukrútált adatmegjelenítésre szolgál.",
-          "correct": false
-        },
-        {
-          "id": 5,
-          "content": "A 2000-es évek elején használták, de a div és a foating leváltotta.",
-          "correct": true
-        },
-        {
-          "id": 6,
-          "content": "Mai napig használják.",
-          "correct": false
-        }
-      ],
-      "points": 2,
-      "active": true
-    },
-    {
-      "id": 3,
-      "question": "Mit takar a CSS rövidítés?",
-      "answers": [
-        {
-          "id": 7,
-          "content": "Cascading Style Sheets",
-          "correct": true
-        },
-        {
-          "id": 8,
-          "content": "Centralized Style Schema",
-          "correct": false
-        },
-        {
-          "id": 9,
-          "content": "Cascading Style System",
-          "correct": false
-        }
-      ],
-      "points": 3,
-      "active": true
-    },
-    {
-      "id": 4,
-      "question": "Mely css property segítségével tudunk block elemnek vetett árnyékot adni?",
-      "answers": [
-        {
-          "id": 10,
-          "content": "drop-shadow",
-          "correct": false
-        },
-        {
-          "id": 11,
-          "content": "box-shadow",
-          "correct": true
-        },
-        {
-          "id": 12,
-          "content": "shadow",
-          "correct": false
-        }
-      ],
-      "points": 2,
-      "active": true
-    },
-    {
-      "id": 5,
-      "question": "Első javascript kérdésem",
+      "question": "Mely html elem segítségével tudunk sort törni?",
       "answers": [
         {
           "id": 1,
-          "content": "",
-          "correct": false
+          "content": "<br>",
+          "correct": true
         },
         {
           "id": 2,
-          "content": "",
+          "content": "<b>",
           "correct": false
         },
         {
           "id": 3,
-          "content": "",
+          "content": "<hr>",
           "correct": false
-        }
-      ],
-      "points": 2,
-      "active": true
-    },
-    {
-      "id": 6,
-      "question": "Ez egy Typescript kérdés",
-      "answers": [
-        {
-          "id": 1,
-          "content": "",
-          "correct": false
-        },
-        {
-          "id": 2,
-          "content": "",
-          "correct": false
-        },
-        {
-          "id": 3,
-          "content": "",
-          "correct": false
-        }
-      ],
-      "points": 2,
-      "active": true
-    },
-    {
-      "id": 8,
-      "question": "Ez egy Angular kérdés",
-      "answers": [
-        {
-          "id": 1,
-          "content": "Első válasz",
-          "correct": false
-        },
-        {
-          "id": 2,
-          "content": "Második válasz",
-          "correct": true
-        },
-        {
-          "id": 3,
-          "content": "Harmadik válasz",
-          "correct": true
         }
       ],
       "points": 1,
       "active": true
     },
     {
-      "id": 9,
-      "question": "Ez egy másik Angular kérdés",
+      "id": 3,
+      "question": "Mely elem segítségével hozhatunk létre rendezett listát?",
       "answers": [
         {
           "id": 1,
-          "content": "első válasz",
+          "content": "<list>",
           "correct": false
         },
         {
           "id": 2,
-          "content": "második válasz",
+          "content": "<ol>",
           "correct": true
         },
         {
           "id": 3,
-          "content": "harmadik válasz",
+          "content": "<ul>",
           "correct": false
         }
       ],
-      "points": 3,
+      "anums": 0,
+      "points": 1,
       "active": true
     },
     {
-      "id": 10,
-      "question": "Ez a harmadik html kérdés?",
+      "id": 4,
+      "question": "Mit takar a CSS rövidítés?",
       "answers": [
         {
           "id": 1,
-          "content": "helyes válasz",
+          "content": "Cascading Style Sheet",
           "correct": true
         },
         {
           "id": 2,
-          "content": "hibás válasz",
+          "content": "Contolled Style Shema",
           "correct": false
         },
         {
           "id": 3,
-          "content": "másik hibás",
+          "content": "Certificated Style System",
           "correct": false
         }
       ],
-      "points": 2,
+      "anums": 0,
+      "points": 1,
       "active": true
     }
   ]

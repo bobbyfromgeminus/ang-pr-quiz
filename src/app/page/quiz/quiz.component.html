@@ -1,5 +1,35 @@
-Megjeleníti az egyes Quiz-eket a tanulóknak.<br>
-Kiírja a kérdést és a lehetséges válaszokat, a választás és a továbblépés után pedig jó válasz esetén növeli a pontokat, amelyek a nézet jobb felső sarkában láthatóak.<br>
-Csak előre gomb kell, ne lehessen visszalépni!<br>
-A megjelölt válasz vagy háttérszínnel, vagy checkbox-al legyen kiemelve!<br>
-Elég az egyválasztós lehetőség, nem kell több kérdés típus!
+<div class="container d-flex flex-wrap studies">
+    
+    <h2 class="col-12">Válassz egy tanulót!</h2>
+
+    <div class="col-12 col-md-6 col-lg-3 py-3 d-flex flex-wrap" *ngFor="let student of students$ | async">
+        <div class="card w-100" (click)="selectStudent(student)">
+            <div class="card-body d-flex flex-wrap flex-column">
+                <h4 class="card-title">{{student.name}}</h4>
+                <p class="card-text">{{student.email}}</p>
+                <p class="card-text mt-auto small text-right">{{student.points}} pont</p>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="container d-flex flex-wrap" *ngIf="quiz$ | async as quiz">
+
+    <div class="card col-12" *ngFor="let question of questionArray">
+        <div class="card-body">
+            <h4 class="card-title">{{question.question}}</h4>
+            <p class="card-text">{{question.points}}</p>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="jumbotron py-4 col-10 offset-1">
+    <p class="m-0">Megjeleníti az egyes Quiz-eket a tanulóknak.<br>
+        Kiírja a kérdést és a lehetséges válaszokat, a választás és a továbblépés után pedig jó válasz esetén növeli a pontokat, amelyek a nézet jobb felső sarkában láthatóak.<br>
+        Csak előre gomb kell, ne lehessen visszalépni!<br>
+        A megjelölt válasz vagy háttérszínnel, vagy checkbox-al legyen kiemelve!<br>
+        Elég az egyválasztós lehetőség, nem kell több kérdés típus!</p>
+</div>

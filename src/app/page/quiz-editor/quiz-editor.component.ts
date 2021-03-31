@@ -22,6 +22,7 @@ export class QuizEditorComponent implements OnInit {
 
   quiz$: Observable<Quiz> = this.activatedRoute.params.pipe(
     switchMap( params => {
+      console.log(params.id);
       if (Number(params.id) === 0) {
         return of(new Quiz());
       }
@@ -34,6 +35,12 @@ export class QuizEditorComponent implements OnInit {
             item.questions.forEach(element => {
               this.questionService.get(element).subscribe(
                 x => {
+                  let anum: number = 0;
+                  x.answers.forEach(
+                    element => {
+                      if (element.content!='') anum++;
+                  });
+                  x.anums = anum;
                   this.questionArray.push(x);
                 })
             })

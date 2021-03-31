@@ -41,13 +41,13 @@
                         style="float: left; width: 80%;"
                         name="answer_1_content" 
                         type="text" 
-                        pattern=".{8,100}" 
+                        pattern=".{3,100}" 
                         required 
                         placeholder="1. válasz"
                         [(ngModel)]="question.answers[0].content">
                 </div> 
                 <div [hidden]="questionForm.controls.answer_1_content?.valid || questionForm.controls.answer_1_content?.pristine" class="error__message">
-                    Legalább 8, de maximum 100 karakter megadása kötelező!
+                    Legalább 3, de maximum 100 karakter megadása kötelező!
                 </div>
             </div>
     
@@ -67,13 +67,13 @@
                         style="float: left; width: 80%;"
                         name="answer_2_content" 
                         type="text" 
-                        pattern=".{8,100}" 
+                        pattern=".{3,100}" 
                         required 
                         placeholder="2. válasz"
                         [(ngModel)]="question.answers[1].content">
                 </div> 
                 <div [hidden]="questionForm.controls.answer_2_content?.valid || questionForm.controls.answer_2_content?.pristine" class="error__message">
-                    Legalább 8, de maximum 100 karakter megadása kötelező!
+                    Legalább 3, de maximum 100 karakter megadása kötelező!
                 </div>
             </div>
     
@@ -93,13 +93,13 @@
                         style="float: left; width: 80%;"
                         name="answer_3_content" 
                         type="text" 
-                        pattern=".{8,100}" 
+                        pattern=".{3,100}" 
                         required 
                         placeholder="3. válasz"
                         [(ngModel)]="question.answers[2].content">
                 </div>  
                 <div [hidden]="questionForm.controls.answer_3_content?.valid || questionForm.controls.answer_3_content?.pristine" class="error__message">
-                    Legalább 8, de maximum 100 karakter megadása kötelező!
+                    Legalább 3, de maximum 100 karakter megadása kötelező!
                 </div>
             </div>
         </div>

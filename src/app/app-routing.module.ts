@@ -12,10 +12,6 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'quiz/:id',
-    component: QuizComponent,
-  },
-  {
     path: 'admin',
     component: AdminComponent,
   },
@@ -26,6 +22,10 @@ const routes: Routes = [
   {
     path: 'edit-question/:id/:qid',
     component: QuestionEditorComponent,
+  },
+  {
+    path: 'list-quiz/:id',
+    component: QuizComponent,
   },
   {
     path: '**',

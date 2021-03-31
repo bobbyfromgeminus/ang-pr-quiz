@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Quiz } from 'src/app/model/quiz';
 import { QuizService } from 'src/app/service/quiz.service';
 
@@ -11,7 +12,16 @@ import { QuizService } from 'src/app/service/quiz.service';
 export class AdminComponent implements OnInit {
 
   // list
-  list$: Observable<Quiz[]> = this.quizService.getAll();
+  list$: Observable<Quiz[]> = this.quizService.getAll().pipe(
+    tap(
+      data => {
+        data.forEach(item => {
+          let qnum = item.questions.length;
+          item.qnums = qnum;
+        })
+      }
+    )
+  );
 
   // filter
   filterPhrase: string = '';

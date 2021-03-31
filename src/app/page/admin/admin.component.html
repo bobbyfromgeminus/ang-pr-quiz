@@ -16,6 +16,11 @@
                 <i id="arrow_up_description" class="arrow fa fa-arrow-up" aria-hidden="true"></i>
                 <i id="arrow_down_description" class="arrow fa fa-arrow-down" aria-hidden="true"></i>
             </th>
+            <th class="th" id="#thead_qnums" (click)="changeOrder('qnums')">
+                kérdések
+                <i id="arrow_up_qnums" class="arrow fa fa-arrow-up" aria-hidden="true"></i>
+                <i id="arrow_down_qnums" class="arrow fa fa-arrow-down" aria-hidden="true"></i>
+            </th>
             <th class="th" id="#thead_active" (click)="changeOrder('active')">
                 aktív
                 <i id="arrow_up_active" class="arrow fa fa-arrow-up" aria-hidden="true"></i>
@@ -36,6 +41,7 @@
                     <option>#</option>
                     <option>cím</option>
                     <option>leírás</option>
+                    <option>kérdések</option>
                     <option>aktív</option>
                 </select>
             </th>
@@ -48,6 +54,7 @@
             <td>{{ item.id }}</td>
             <td>{{ item.title }}</td>
             <td>{{ item.description }}</td>
+            <td>{{ item.qnums }}</td>
             <td>{{ item.active }}</td>
             <td class="text-center">
                 <div class="btn-group" role="group">

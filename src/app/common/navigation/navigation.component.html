@@ -7,10 +7,14 @@
     <div class="collapse navbar-collapse" id="collapsibleNavId">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-                <a class="nav-link" routerLink="/">Home</a>
+                <a class="nav-link" routerLink="/">Tanuló</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/admin">Admin</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tanár</a>
+                <div class="dropdown-menu" aria-labelledby="dropdownId">
+                    <a class="dropdown-item" href="#">Tanulók</a>
+                    <a class="dropdown-item" routerLink="/admin">Kérdéssorok</a>
+                </div>
             </li>
             
         </ul>

@@ -5,5 +5,6 @@ export class Quiz {
     title: string = '';
     description: string = '';
     questions: number[] = new Array;
+    qnums?: number = 0;
     active: boolean = true;
 }

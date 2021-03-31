@@ -69,7 +69,7 @@ export class QuestionEditorComponent implements OnInit {
                       // ... végül updatelem a kvízt a módosult adattal.
                       this.quizService.update(data).subscribe(
                           () => {
-                            this.router.navigate(['/edit-quiz/'+this.quiz]);
+                            this.router.navigate(['/edit-question/'+this.lastID+'/'+this.quiz]);
                       });
                 });
             })

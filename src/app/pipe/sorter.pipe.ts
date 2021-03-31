@@ -15,12 +15,8 @@ export class SorterPipe implements PipeTransform {
       if (sortby==='') return value;
       else {
         return value.sort( (a, b) => {
-          if ( a[sortby] < b[sortby] ){
-            return -1;
-          }
-          if ( a[sortby] > b[sortby] ){
-            return 1;
-          }
+          if ( a[sortby] < b[sortby] ) return -1;
+          if ( a[sortby] > b[sortby] ) return 1;
           return 0;
         });
       }
@@ -28,17 +24,12 @@ export class SorterPipe implements PipeTransform {
       if (sortby==='') return value;
       else {
         return value.sort( (a, b) => {
-          if ( a[sortby] > b[sortby] ){
-            return -1;
-          }
-          if ( a[sortby] < b[sortby] ){
-            return 1;
-          }
+          if (a[sortby] > b[sortby]) return -1;
+          if (a[sortby] < b[sortby]) return 1;
           return 0;
         });
       }
     }
-
   }
 
 }
