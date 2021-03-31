@@ -20,6 +20,7 @@ export class AdminComponent implements OnInit {
   // Sorter
   sortby: string = '';
   sorterDirection: number = 1;
+  
   selectedItemToDelete: Quiz = new Quiz();
   
   constructor(private quizService: QuizService) {}

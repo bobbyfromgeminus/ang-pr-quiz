@@ -54,31 +54,31 @@
                             <button type="button"
                                     class="btn btn-success btn-sm btn-block"
                                     [routerLink]="'/edit-question/0/'+quiz.id">
-                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                <i class="fa fa-plus-circle"></i>
                             </button>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let question of questionArray">
+                    <tr *ngFor="let question of questionArray" [id]="'tr_'+question.id">
                         <td>{{ question.id }}</td>
                         <td>{{ question.question }}</td>
                         <td>{{ question.points }}</td>
                         <td>{{ question.active }}</td>
-                        <td>
+                        <td class="text-center">
                             <div class="btn-group" role="group" aria-label="">
                                 <button type="button" 
                                     class="btn btn-sm btn-warning" 
                                     [routerLink]="'/edit-question/'+question.id+'/'+quiz.id">
-                                <i class="fa fa-pencil"></i>
-                            </button>
-                            <button type="button" 
+                                    <i class="fa fa-pencil"></i>
+                                </button>
+                                <button type="button" 
                                     class="btn btn-sm btn-danger" 
-                                    
+                                    (click)="setToDelete(question)" 
                                     data-toggle="modal" 
                                     data-target="#myModal">
-                                <i class="fa fa-trash"></i>
-                            </button>
+                                    <i class="fa fa-trash"></i>
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -100,3 +100,23 @@
     <p class="m-0">Itt lehet Quiz-t létrehozni vagy szerkeszteni.<br>
         Erre egy űrlap szolgál, validációval.</p>
 </div>
+
+
+<!-- MODAL -->
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Törlés megerősítése</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Bezárás"></button>
+        </div>
+        <div class="modal-body">
+            <p>Valóban törölni szeretnéd ezt a kérdéssort? #{{selectedItemToDelete.id}}</p>
+        </div>
+        <div class="modal-footer">
+          <button (click)="onDelete()"  type="button" class="btn btn-danger" data-dismiss="modal">Igen, törlöm.</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Mégsem törölném.</button>
+        </div>
+      </div>
+    </div>
+  </div>

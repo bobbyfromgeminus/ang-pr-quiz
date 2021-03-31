@@ -102,7 +102,7 @@
                     Legalább 8, de maximum 100 karakter megadása kötelező!
                 </div>
             </div>
-        </div>    
+        </div>
 
         <div class="form-group">
             <label>pontszám</label>
@@ -113,6 +113,7 @@
                 pattern="" 
                 required 
                 min="1"
+                max="10"
                 [(ngModel)]="question.points">
             <div [hidden]="questionForm.controls.points?.valid || questionForm.controls.points?.pristine" class="error__message">
                 Szám

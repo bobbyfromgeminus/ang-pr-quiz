@@ -28,7 +28,6 @@
       "title": "HTML kérdéssor",
       "description": "Ebben a kvízben HTML témajú kérdéseket találsz.",
       "questions": [
-        1,
         2
       ],
       "active": true
@@ -72,29 +71,6 @@
     }
   ],
   "questions": [
-    {
-      "id": 1,
-      "question": "Mit takar a HTML rövidítés?",
-      "answers": [
-        {
-          "id": 1,
-          "content": "HyperTransport Material Literature",
-          "correct": false
-        },
-        {
-          "id": 2,
-          "content": "HyperText Markup Language",
-          "correct": true
-        },
-        {
-          "id": 3,
-          "content": "HyperText Marking Language",
-          "correct": false
-        }
-      ],
-      "points": 3,
-      "active": true
-    },
     {
       "id": 2,
       "question": "Használták-e a table elemet fő sitebuild elemként?",
@@ -254,6 +230,29 @@
         }
       ],
       "points": 3,
+      "active": true
+    },
+    {
+      "id": 10,
+      "question": "Ez a harmadik html kérdés?",
+      "answers": [
+        {
+          "id": 1,
+          "content": "helyes válasz",
+          "correct": true
+        },
+        {
+          "id": 2,
+          "content": "hibás válasz",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "content": "másik hibás",
+          "correct": false
+        }
+      ],
+      "points": 2,
       "active": true
     }
   ]

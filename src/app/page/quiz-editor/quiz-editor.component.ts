@@ -15,8 +15,10 @@ import { QuizService } from 'src/app/service/quiz.service';
 })
 export class QuizEditorComponent implements OnInit {
   
+  questionIDArray: number[] = []
   questionArray: Question[] = [];
-  numberOfQuestions: number = 0;
+  selectedItemToDelete: Question = new Question();
+  quizID: number = 0;
 
   quiz$: Observable<Quiz> = this.activatedRoute.params.pipe(
     switchMap( params => {
@@ -27,8 +29,9 @@ export class QuizEditorComponent implements OnInit {
       return this.quizService.get(Number(params.id)).pipe(
         tap(
           item => {
+            this.quizID = params.id;
+            this.questionIDArray = item.questions;
             item.questions.forEach(element => {
-              this.numberOfQuestions = item.questions.length;
               this.questionService.get(element).subscribe(
                 x => {
                   this.questionArray.push(x);
@@ -40,8 +43,6 @@ export class QuizEditorComponent implements OnInit {
 
     })
   );
-
-  
 
   constructor(
     private quizService: QuizService,
@@ -70,8 +71,33 @@ export class QuizEditorComponent implements OnInit {
     }
   }
 
-
-
   // A kérdés törlésénél a törlés mellett a quiz questions tömbjéból is ki kell venni az érintett id-t!
+  setToDelete(item: Question): void {
+    this.selectedItemToDelete = item;
+  }
+
+  onDelete(): void {
+    let delQn: Question = this.selectedItemToDelete;
+    let filteredIDArray: number[] = [];
+    this.questionService.remove(this.selectedItemToDelete).subscribe(
+      () => {
+        // törlendő ID törlése a kérdés tömbből
+        filteredIDArray = this.questionIDArray.filter(
+          value => {
+            return value != delQn.id;
+        });
+        this.quizService.get(this.quizID).subscribe(
+          data => {
+            // kvíz kérdés tömbjének cseréje és update
+            data.questions = filteredIDArray;
+            this.quizService.update(data).subscribe(
+              () => {
+                // tábla sorának törlése
+                document.querySelector('#tr_'+delQn.id)?.remove();
+            });
+        });
+    });
+    
+  }
 
 }
