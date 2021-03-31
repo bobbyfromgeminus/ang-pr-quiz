@@ -16,7 +16,7 @@
 
 <div class="container d-flex flex-wrap questions hide" *ngIf="quiz$ | async as quiz">
 
-    <div class="card col-12 hide" *ngFor="let question of questionArray" [id]="'q_'+question.id">
+    <div class="card col-12 " *ngFor="let question of questionArray" [id]="'q_'+question.id">
         <div class="card-body w-100">
             <h4 class="card-title">{{question.question}}</h4>
 
