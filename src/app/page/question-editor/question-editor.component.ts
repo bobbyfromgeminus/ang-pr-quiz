@@ -58,21 +58,15 @@ export class QuestionEditorComponent implements OnInit {
         //question.answers = this.defaultAnswer;
         // Új kérdés létrehozása
         this.questionService.create(question).subscribe(
-          () => {
+          createdQuestion => {
             // Szükségem van arra a kvízre, amelyhez kapcsolni akarom a létrehozott kérdést...
             this.quizService.get(this.quiz).subscribe(
               data => {
-                // ... ezért lekérem az új kérdés id-jét...
-                this.questionService.getAll().subscribe(
-                    item => {
-                      this.lastID = item.slice(-1)[0].id;
-                      // ... bővítem vele a kvíz kérdés tömbjét...
-                      data.questions.push(this.lastID);
-                      // ... végül updatelem a kvízt a módosult adattal.
-                      this.quizService.update(data).subscribe(
-                          () => {
-                            this.router.navigate(['/edit-quiz/'+this.quiz]);
-                      });
+                data.questions.push(createdQuestion.id);
+                // ... végül updatelem a kvízt a módosult adattal.
+                this.quizService.update(data).subscribe(
+                  () => {
+                    this.router.navigate(['/edit-quiz/'+this.quiz]);
                 });
             })
         })
