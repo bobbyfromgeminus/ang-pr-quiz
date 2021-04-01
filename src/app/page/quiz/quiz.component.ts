@@ -19,8 +19,11 @@ export class QuizComponent implements OnInit {
   selectedStudent: Student = new Student();
   students$: Observable<Student[]> = this.studentService.getAll();
 
-  questionIDArray: number[] = []
+  currentPoints: number = 0;
+  questionIDArray: number[] = [];
+  questionArrayLength: number = 0;
   questionArray: Question[] = [];
+  currentPosition: number = 0;
   selectedItemToDelete: Question = new Question();
   quizID: number = 0;
   
@@ -35,6 +38,7 @@ export class QuizComponent implements OnInit {
           item => {
             this.quizID = params.id;
             this.questionIDArray = item.questions;
+            this.questionArrayLength = item.questions.length;
             item.questions.forEach(element => {
               this.questionService.get(element).subscribe(
                 x => {
@@ -59,12 +63,27 @@ export class QuizComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  nextPosition(): void {
+    let prevID = this.questionIDArray[this.currentPosition-1];
+    let currID = this.questionIDArray[this.currentPosition];
+    if (this.currentPosition === this.questionArrayLength) {
+      document.querySelector('#q_'+prevID)?.classList.add('hide');
+      document.querySelector('.next__button')?.classList.add('hide');
+      document.querySelector('.game__over')?.classList.remove('hide');
+    } else {
+      document.querySelector('#q_'+prevID)?.classList.add('hide');
+      document.querySelector('#q_'+currID)?.classList.remove('hide');
+      this.currentPosition++;
+    }
+  }
+
   selectStudent(student: Student): void {
     this.selectedStudent = student;
     let studies = document.querySelector('.studies');
     let questions = document.querySelector('.questions');
     studies?.classList.add('hide');
     questions?.classList.remove('hide');
+    this.nextPosition()
   }
 
 }

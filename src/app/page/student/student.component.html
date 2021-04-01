@@ -77,27 +77,26 @@
     </tbody>
 </table>
 
-<div class="jumbotron py-4 col-10 offset-1">
-    <p class="m-0">A feladat nem írta elő, de pár helyen utalás található arra, hogy szükség lesz a tanulók adatainak kezelésére.<br>
-    Ehhez első körben elkészült a tanulókat listázó táblázat.</p>
-</div>
-
-
 <!-- MODAL -->
 <div id="myModal" class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Törlés megerősítése</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Bezárás"></button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Törlés megerősítése</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Bezárás"></button>
+            </div>
+            <div class="modal-body">
+                <p>Valóban törölni szeretnéd ezt a tanulót? #{{selectedItemToDelete.id}}</p>
+            </div>
+            <div class="modal-footer">
+                <button (click)="onDelete()"  type="button" class="btn btn-danger" data-dismiss="modal">Igen, törlöm.</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Mégsem törölném.</button>
+            </div>
         </div>
-        <div class="modal-body">
-            <p>Valóban törölni szeretnéd ezt a tanulót? #{{selectedItemToDelete.id}}</p>
-        </div>
-        <div class="modal-footer">
-          <button (click)="onDelete()"  type="button" class="btn btn-danger" data-dismiss="modal">Igen, törlöm.</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Mégsem törölném.</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
+
+<div class="jumbotron">
+    <p class="m-0">A feladat nem írta elő, de pár helyen utalás található arra, hogy szükség lesz a tanulók adatainak kezelésére.<br>
+    Ehhez első körben elkészült a tanulókat listázó táblázat.</p>
+</div>

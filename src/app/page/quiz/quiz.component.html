@@ -16,20 +16,20 @@
 
 <div class="container d-flex flex-wrap questions hide" *ngIf="quiz$ | async as quiz">
 
-    <div class="card col-12 " *ngFor="let question of questionArray" [id]="'q_'+question.id">
+    <div class="card col-12 p-5 hide" *ngFor="let question of questionArray" [id]="'q_'+question.id">
         <div class="card-body w-100">
             <h4 class="card-title">{{question.question}}</h4>
 
             <div class="form-group ml-5">
-                <input type="checkbox" class="form-check-input">
+                <input type="radio" [name]="'a_'+question.id" class="form-check-input">
                 <label class="form-check-label">{{ question.answers[0].content }}</label>
             </div>
             <div class="form-group ml-5">
-                <input type="checkbox" class="form-check-input">
+                <input type="radio" [name]="'a_'+question.id" class="form-check-input">
                 <label class="form-check-label">{{ question.answers[1].content }}</label>
             </div>
             <div class="form-group ml-5">
-                <input type="checkbox" class="form-check-input">
+                <input type="radio" [name]="'a_'+question.id" class="form-check-input">
                 <label class="form-check-label">{{ question.answers[2].content }}</label>
             </div>
 
@@ -37,10 +37,16 @@
         </div>
     </div>
 
+    <div class="p-5 game__over hide">
+        <h2>Gratulálok!</h2>
+        <h4>A kérdéssor végére értél.</h4>
+        <p class="p-3">Elért eredményed: <b>{{currentPoints}}</b> pont</p>
+    </div>
+
+    <button type="button" class="btn btn-primary btn-block my-3 next__button" (click)="nextPosition()">Következő kérdés</button>
 </div>
 
-
-<div class="jumbotron py-4 col-10 offset-1">
+<div class="jumbotron">
     <p class="m-0">Megjeleníti az egyes Quiz-eket a tanulóknak.<br>
         Kiírja a kérdést és a lehetséges válaszokat, a választás és a továbblépés után pedig jó válasz esetén növeli a pontokat, amelyek a nézet jobb felső sarkában láthatóak.<br>
         Csak előre gomb kell, ne lehessen visszalépni!<br>

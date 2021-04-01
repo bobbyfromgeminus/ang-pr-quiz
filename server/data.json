@@ -2,7 +2,7 @@
   "students": [
     {
       "id": 1,
-      "name": "Johnnny Mnemonic",
+      "name": "Johnny Mnemonic",
       "email": "johnny@mnemonic.com",
       "points": 0,
       "active": true
@@ -20,6 +20,13 @@
       "email": "hpotter@gmail.com",
       "points": 0,
       "active": true
+    },
+    {
+      "id": 4,
+      "name": "Darth Vader",
+      "email": "vader@empire.com",
+      "points": 0,
+      "active": true
     }
   ],
   "quizzes": [
@@ -30,8 +37,7 @@
       "questions": [
         1,
         2,
-        3,
-        5
+        3
       ],
       "active": true
     },
@@ -157,14 +163,6 @@
           "correct": false
         }
       ],
-      "anums": 0,
-      "points": 1,
-      "active": true
-    },
-    {
-      "id": 5,
-      "question": "Ez egy Angular kérdés",
-      "answers": [],
       "anums": 0,
       "points": 1,
       "active": true
