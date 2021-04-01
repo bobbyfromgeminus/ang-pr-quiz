@@ -11,14 +11,14 @@
       "id": 2,
       "name": "Donna Noble",
       "email": "donna.noble@gmail.com",
-      "points": 4,
+      "points": 1,
       "active": true
     },
     {
       "id": 3,
       "name": "Harry Potter",
       "email": "hpotter@gmail.com",
-      "points": 1,
+      "points": 3,
       "active": true
     },
     {
