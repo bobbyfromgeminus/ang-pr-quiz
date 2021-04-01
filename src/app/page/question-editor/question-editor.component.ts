@@ -17,6 +17,13 @@ export class QuestionEditorComponent implements OnInit {
   quiz: number = 0;
   lastID: number = 0;
 
+  // üres tripla válasz tömb
+  defaultAnswer: Answer[] = [
+    { "id": 1, "content": "", "correct": false },
+    { "id": 2, "content": "", "correct": false },
+    { "id": 3, "content": "", "correct": false }
+  ];
+
   question$: Observable<Question> = this.activatedRoute.params.pipe(
     switchMap( params => {
       // eltárolom annak a kvíznek az id-jét, amelyhez kapcsolom majd az új kérdést - paraméterként átadtam
@@ -24,7 +31,9 @@ export class QuestionEditorComponent implements OnInit {
 
       // ha a id===0, akkor új kérdést rögzítek
       if (Number(params.id) === 0) {
-        return of(new Question());
+        let newQuestion = new Question;
+        newQuestion.answers = this.defaultAnswer;
+        return of(newQuestion);
       }
 
       // ellenkező esetben lekérem az adott id-jű kérdést az űrlap számára
@@ -32,13 +41,6 @@ export class QuestionEditorComponent implements OnInit {
 
     })
   );
-
-  // üres tripla válasz tömb
-  defaultAnswer: Answer[] = [
-    { "id": 1, "content": "", "correct": false },
-    { "id": 2, "content": "", "correct": false },
-    { "id": 3, "content": "", "correct": false }
-  ];
 
   constructor(
     private questionService: QuestionService,
@@ -53,7 +55,7 @@ export class QuestionEditorComponent implements OnInit {
     try {
       // LÉTREHOZÁS
       if (question.id == 0) {
-        question.answers = this.defaultAnswer;
+        //question.answers = this.defaultAnswer;
         // Új kérdés létrehozása
         this.questionService.create(question).subscribe(
           () => {
@@ -69,7 +71,7 @@ export class QuestionEditorComponent implements OnInit {
                       // ... végül updatelem a kvízt a módosult adattal.
                       this.quizService.update(data).subscribe(
                           () => {
-                            this.router.navigate(['/edit-question/'+this.lastID+'/'+this.quiz]);
+                            this.router.navigate(['/edit-quiz/'+this.quiz]);
                       });
                 });
             })

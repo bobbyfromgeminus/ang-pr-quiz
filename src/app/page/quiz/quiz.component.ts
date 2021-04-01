@@ -20,11 +20,11 @@ export class QuizComponent implements OnInit {
   students$: Observable<Student[]> = this.studentService.getAll();
 
   currentPoints: number = 0;
+  tempPoints: number = 0;
   questionIDArray: number[] = [];
   questionArrayLength: number = 0;
   questionArray: Question[] = [];
   currentPosition: number = 0;
-  selectedItemToDelete: Question = new Question();
   quizID: number = 0;
   
   quiz$: Observable<Quiz> = this.activatedRoute.params.pipe(
@@ -41,8 +41,8 @@ export class QuizComponent implements OnInit {
             this.questionArrayLength = item.questions.length;
             item.questions.forEach(element => {
               this.questionService.get(element).subscribe(
-                x => {
-                  this.questionArray.push(x);
+                data => {
+                  this.questionArray.push(data);
                 })
                 console.table(this.questionArray);
             })
@@ -63,13 +63,25 @@ export class QuizComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  checkPoints(checkedA: number): void {
+    let question = this.questionArray[this.currentPosition-1];
+    let answers = question.answers;
+    if (answers[checkedA].correct === true) this.tempPoints += question.points;
+    else this.tempPoints += 0;
+  }
+
   nextPosition(): void {
     let prevID = this.questionIDArray[this.currentPosition-1];
     let currID = this.questionIDArray[this.currentPosition];
+    this.currentPoints = this.tempPoints;
     if (this.currentPosition === this.questionArrayLength) {
       document.querySelector('#q_'+prevID)?.classList.add('hide');
       document.querySelector('.next__button')?.classList.add('hide');
-      document.querySelector('.game__over')?.classList.remove('hide');
+      this.selectedStudent.points = this.currentPoints;
+      this.studentService.update(this.selectedStudent).subscribe(
+        () => {
+          document.querySelector('.game__over')?.classList.remove('hide');
+        });
     } else {
       document.querySelector('#q_'+prevID)?.classList.add('hide');
       document.querySelector('#q_'+currID)?.classList.remove('hide');

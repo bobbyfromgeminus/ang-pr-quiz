@@ -22,7 +22,6 @@ export class QuizEditorComponent implements OnInit {
 
   quiz$: Observable<Quiz> = this.activatedRoute.params.pipe(
     switchMap( params => {
-      console.log(params.id);
       if (Number(params.id) === 0) {
         return of(new Quiz());
       }

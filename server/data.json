@@ -4,28 +4,28 @@
       "id": 1,
       "name": "Johnny Mnemonic",
       "email": "johnny@mnemonic.com",
-      "points": 0,
+      "points": 4,
       "active": true
     },
     {
       "id": 2,
       "name": "Donna Noble",
       "email": "donna.noble@gmail.com",
-      "points": 0,
+      "points": 4,
       "active": true
     },
     {
       "id": 3,
       "name": "Harry Potter",
       "email": "hpotter@gmail.com",
-      "points": 0,
+      "points": 1,
       "active": true
     },
     {
       "id": 4,
       "name": "Darth Vader",
       "email": "vader@empire.com",
-      "points": 0,
+      "points": 4,
       "active": true
     }
   ],
