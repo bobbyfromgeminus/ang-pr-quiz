@@ -12,8 +12,9 @@
     }
     &:hover {
         transform: scale(1.05);
+        transform: scale(1.05) translateY(-.5rem);
         & .card {
-            box-shadow: 0 0 .8rem #00000033;
+            box-shadow: 0 .5rem .7rem #00000044;
             background-color: #ffffff;
         }
     }

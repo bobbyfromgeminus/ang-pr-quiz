@@ -1,7 +1,37 @@
+* {
+    transition: all .15s ease-in-out;
+}
+
 .hide {
     display: none !important;
 }
 
 .show {
     display: block !important;
+}
+
+.points {
+    position: fixed;
+    top: 0;
+    right: 0;
+    
+    padding: 0 1.5rem 0 4rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    font-size: 1.5rem;
+    border-bottom-left-radius: 3.5rem;
+    background-color: #0069d9;
+    color: #ffffff;
+}
+
+small {
+    font-size: .9rem;
+}
+
+.student__box {
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.05) translateY(-.5rem);
+        box-shadow: 0 .5rem .7rem #00000044;
+    }
 }
